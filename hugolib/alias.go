@@ -107,6 +107,8 @@ func (s *Site) publishDestAlias(allowRoot bool, path, permalink string, outputFo
 		return err
 	}
 
+	p.Params["aliaslink"] = path
+
 	aliasContent, err := handler.renderAlias(isXHTML, permalink, p)
 	if err != nil {
 		return err
