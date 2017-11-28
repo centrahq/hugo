@@ -114,6 +114,8 @@ func (s *Site) publishDestAlias(allowRoot bool, path, permalink string, outputFo
 		return err
 	}
 
+	delete(p.Params, "aliaslink")
+
 	pd := publisher.Descriptor{
 		Src:          aliasContent,
 		TargetPath:   targetPath,
