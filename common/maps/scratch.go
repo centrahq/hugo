@@ -89,6 +89,18 @@ func (c *Scratch) Get(key string) interface{} {
 	return val
 }
 
+// DeleteMap removes a map with the given key in the Node context.
+func (c *Scratch) DeleteMap(key string) string {
+	c.mu.Lock()
+	_, found := c.values[key]
+	if found {
+	  delete(c.values, key)
+	}
+
+	c.mu.Unlock()
+	return ""
+}
+
 // SetInMap stores a value to a map with the given key in the Node context.
 // This map can later be retrieved with GetSortedMapValues.
 func (c *Scratch) SetInMap(key string, mapKey string, value interface{}) string {
